@@ -13,4 +13,3 @@ phases:
     commands:
       - echo "Deploying to AWS Lambda"
       - zip -r backend.zip *
-      - aws lambda update-function-code --function-name FoodMinistryBackend --zip-file fileb://backend.zip
