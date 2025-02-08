@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies"
+      - npm install
+  build:
+    commands:
+      - echo "Building application"
+  post_build:
+    commands:
+      - echo "Deploying to AWS Lambda"
+      - zip -r backend.zip *
+      - aws lambda update-function-code --function-name FoodMinistryBackend --zip-file fileb://backend.zip
